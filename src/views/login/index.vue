@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import local from '@/utils/local'
 export default {
   data () {
     // 校验手机号的函数
@@ -41,8 +42,8 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '',
-        code: ''
+        mobile: '15164685029',
+        code: '246810'
       },
       loginRules: {
         mobile: [
@@ -51,7 +52,7 @@ export default {
         ],
         code: [
           { required: true, message: '请输入验证码', trigger: 'blur' },
-          { len: 6, message: '验证码位数不正确', trigger: 'blur' }
+          { len: 6, message: '验证码长度6位', trigger: 'blur' }
         ]
       }
     }
@@ -63,6 +64,9 @@ export default {
           // 发请求，验证手机号和验证码 后台
           this.$http.post('authorizations', this.loginForm).then(res => {
             // 成功
+            // 保存用户信息(token)
+            // eslint-disable-next-line no-undef
+            local.setUser(res.data.data)
             this.$router.push('/')
           }).catch(err => {
             // 失败 提示
