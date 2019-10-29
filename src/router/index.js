@@ -6,6 +6,7 @@ import Login from '../views/login/index.vue'
 import Home from '@/views/home'
 import Welcome from '@/views/welcome'
 import NotFound from '@/views/404'
+import Article from '@/views/article'
 Vue.use(VueRouter)
 const router = new VueRouter({
 // 配置对象
@@ -20,7 +21,8 @@ const router = new VueRouter({
       component: Home,
       children: [
         // 欢迎
-        { path: '/', component: Welcome }
+        { path: '/', component: Welcome },
+        { path: '/article', component: Article }
       ]
     },
     // 匹配  不符合路由规则的路径
