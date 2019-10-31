@@ -3,6 +3,8 @@ import axios from 'axios'
 import local from '@/utils/local'
 import router from '@/router'
 
+import JSONBIG from 'json-bigint'
+
 // 对axios进行配置
 // 基准地址
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'
@@ -33,5 +35,19 @@ axios.interceptors.response.use(res => res, err => {
   // 对响应错误做点什么
   return Promise.reject(err)
 })
+
+// axios.defaults.transformResponse = [(data) => {
+//   return JSONBIG.parse(data)
+// }]
+
+axios.defaults.transformResponse = [(data) => {
+  // 对data进行格式转换  data就是后台响应的json字符串
+  // 如果没数据呢？data === null 使用JSONBIG.parse(null) 报错
+  try {
+    return JSONBIG.parse(data)
+  } catch (e) {
+    return data
+  }
+}]
 
 export default axios
