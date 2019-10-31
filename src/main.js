@@ -10,6 +10,7 @@ import axios from '@/api'
 // Vue.component('my-bread', MyBread)
 import plugin from '@/components'
 Vue.use(plugin)
+// plugin 是插件的意思
 
 Vue.prototype.$http = axios
 
