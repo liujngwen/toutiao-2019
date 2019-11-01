@@ -17,14 +17,16 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="频道 :">
-          <el-select v-model="reqParams.channel_id" placeholder="请选择" clearable>
+          <!-- 频道组件 -->
+          <my-channel v-model="reqParams.channel_id"></my-channel>
+          <!-- <el-select v-model="reqParams.channel_id" placeholder="请选择" clearable>
             <el-option
               v-for="item in channelOptions"
               :key="item.id"
               :label="item.name"
               :value="item.id"
             ></el-option>
-          </el-select>
+          </el-select> -->
         </el-form-item>
         <el-form-item label="日期 :">
           <el-date-picker
@@ -128,17 +130,17 @@ export default {
     }
   },
   created () {
-    this.getChannelOptions()
+    // this.getChannelOptions()
     this.getArticles()
   },
   methods: {
-    // 获取频道选项数据
-    async getChannelOptions () {
-      const {
-        data: { data }
-      } = await this.$http.get('channels')
-      this.channelOptions = data.channels
-    },
+    // // 获取频道选项数据
+    // async getChannelOptions () {
+    //   const {
+    //     data: { data }
+    //   } = await this.$http.get('channels')
+    //   this.channelOptions = data.channels
+    // },
     // 获取文章列表数据
     async getArticles () {
       // 第一种： axios.get(url?key=value&key1=vaule1&...) get传参
