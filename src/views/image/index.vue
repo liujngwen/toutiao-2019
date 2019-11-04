@@ -158,7 +158,7 @@ export default {
 
 <style scoped lang='less'>
 .img_list {
-  padding-top: 20px;
+  margin-top: 20px;
   .img_item {
     width: 170px;
     height: 170px;
