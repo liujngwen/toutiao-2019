@@ -11,6 +11,7 @@ import Image from '@/views/image'
 import Publish from '@/views/publish'
 import Comment from '@/views/comment'
 import Setting from '@/views/setting'
+import Fans from '@/views/fans'
 Vue.use(VueRouter)
 const router = new VueRouter({
 // 配置对象
@@ -30,7 +31,8 @@ const router = new VueRouter({
         { path: '/image', component: Image },
         { path: '/publish', component: Publish },
         { path: '/comment', component: Comment },
-        { path: '/setting', component: Setting }
+        { path: '/setting', component: Setting },
+        { path: '/fans', component: Fans }
       ]
     },
     // 匹配  不符合路由规则的路径
