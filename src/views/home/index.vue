@@ -72,18 +72,28 @@
 </template>
 
 <script>
+import eventBus from '@/eventBus'
 import local from '@/utils/local'
 export default {
   data () {
     return {
       isOpen: true,
-      userInfo: {}
+      userInfo: {
+        name: '',
+        photo: ''
+      }
     }
   },
   created () {
     const user = local.getUser() || {}
     this.userInfo.name = user.name
     this.userInfo.photo = user.photo
+    eventBus.$on('updateName', (name) => {
+      this.userInfo.name = name
+    })
+    eventBus.$on('updatePhoto', (photo) => {
+      this.userInfo.photo = photo
+    })
   },
   methods: {
     toggleMemu () {
